@@ -16,7 +16,7 @@ $mail->Host = "mail.unieats.co.za"; // Or the SMTP server name provided by cPane
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Or PHPMailer::ENCRYPTION_SMTPS if using SSL
 $mail->Port = 587; // Use 465 if using SSL
 $mail->Username = "admin@unieats.co.za";
-$mail->Password = "Stan1542@";
+$mail->Password = "-------";
 
 $mail->isHtml(true);
 
