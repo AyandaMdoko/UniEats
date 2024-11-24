@@ -15,12 +15,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    # Step 1: Checkout code
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
+    # Step 2: Set up PHP environment
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1' # Use the PHP version your project requires
+        extensions: mbstring, json, pdo # Add extensions required for your project
+        coverage: none
+
+    # Step 3: Validate composer.json and composer.lock
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
-    - name: Cache Composer packages
+    # Step 4: Cache Composer packages
+    - name: Cache Composer dependencies
       id: composer-cache
       uses: actions/cache@v3
       with:
@@ -29,11 +41,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+    # Step 5: Install dependencies
+    - name: Install Composer dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
+    # Step 6: Run the test suite (optional, uncomment if tests are available)
     # - name: Run test suite
     #   run: composer run-script test
+
