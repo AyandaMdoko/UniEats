@@ -1,0 +1,7 @@
+{
+    "require": {
+        "dompdf/dompdf": "*",
+        "phpmailer/phpmailer": "*",
+        "cboden/ratchet": "^0.4.4"
+    }
+}
